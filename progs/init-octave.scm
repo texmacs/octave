@@ -18,8 +18,8 @@
 
 (define (octave-launcher)
   (with boot (string-append "\"" (octave-source-path) "/tmstart.m\"")
-    (if (url-exists-in-path? "octave-cli")
-        (string-append "octave-cli -qi " boot)
+    (if (url-exists-in-path? "octave")
+        (string-append "octave --no-gui -qi " boot)
         (string-append "octave-octave-app -qi " boot))))
 
 (plugin-configure octave
@@ -30,7 +30,7 @@
   (:winpath "Octave/Octave*" "bin")
   (:winpath "Octave/Octave*" "mingw64/bin")
   (:macpath "Octave*" "Contents/Resources/usr/bin")
-  (:require (or (url-exists-in-path? "octave-cli")
+  (:require (or (url-exists-in-path? "octave")
                 (url-exists-in-path? "octave-octave-app")))
   (:launch ,(octave-launcher))
   (:session "Octave"))
