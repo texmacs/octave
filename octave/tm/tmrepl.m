@@ -36,17 +36,9 @@ function tmrepl()
     eval (__r, "tmlasterr");
 
     if disp_ans
-      global TM_OCTAVE_PLOT_DIGEST;
-      
-      updated_digest= hash ("md5", serialize (get(gcf())));
-      if !strcmp (TM_OCTAVE_PLOT_DIGEST, updated_digest)
-        TM_OCTAVE_PLOT_DIGEST= updated_digest;
-        plotted= tmplot (); ## call TeXmacs plotting interface
-        if plotted
-          disp_ans= false;
-        endif
-      endif
-    endif 
+      tmplot (); ## call TeXmacs plotting interface
+      clf()
+    endif
 
     if disp_ans && isnewans (ans)
       tmdisp (ans);
