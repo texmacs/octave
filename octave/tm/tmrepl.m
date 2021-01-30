@@ -33,7 +33,6 @@ function tmrepl()
       # Reset ans to empty string
       ans= "";
       # Suppress the output
-      __r = strrep(__r,"\n",";\n");
       __r= sprintf ("%s;", __r);
     endif
 
